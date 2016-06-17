@@ -1,11 +1,14 @@
 require 'minitest/autorun'
 require 'minitest/rg'
-require_relative '../guy_1'
+require_relative '../guy'
+require_relative '../arena'
 
 class TestGuy < MiniTest::Test
 
   def setup
-    @guy1=Guy.new("Poo", "💩")
+    @guy1=Guy.new("Poo", "💩", 3)
+    @guy2=Guy.new("Ghost", "👻", 4)
+    @arena=Arena.new(12)
   end
 
   def test_guy_has_name
@@ -29,12 +32,27 @@ class TestGuy < MiniTest::Test
     assert_equal(3, @guy1.position)
   end
 
-  def test_guy_moves_left
-    assert_equal(2, @guy1.move_left(@guy1))
-  end
+  # def test_guy_moves_left
+  #   assert_equal(2, @guy1.move_left(@guy1))
+  # end
 
-  def test_guy_moves_right
-    assert_equal(4, @guy1.move_right(@guy1))
+  # def test_guy_moves_right
+  #   assert_equal(4, @guy1.move_right(@guy1))
+  # end
+
+  # def test_guy_gets_punched
+  #   assert_equal(4, @guy1.punch(@guy2))
+  # end
+
+  def test_guy_gets_kicked
+    assert_equal(3, @guy1.kick(@guy2))
   end
 
 end
+
+
+
+
+
+
+

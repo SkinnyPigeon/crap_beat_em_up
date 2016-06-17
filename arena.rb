@@ -3,9 +3,8 @@ class Arena
   attr_accessor(:size)
 
 
-  def initialize(size, positions)
+  def initialize(size)
     @state = Array.new(size, 0)
-    set_up_positions(positions)
   end
 
   def size

@@ -7,7 +7,7 @@ class TestArena < MiniTest::Test
 
   def setup
     @arena=Arena.new(12)
-    @guy1=Guy.new("Poo", "💩")
+    @guy1=Guy.new("Poo", "💩", 3)
   end
 
   def test_arena_is_there
