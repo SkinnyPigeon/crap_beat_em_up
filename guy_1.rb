@@ -23,6 +23,13 @@ class Guy
     if move = "a"
       guy.move(-1)
     end
+  end  
+
+  def move_right(guy)
+    move = gets.chomp
+    if move = "d"
+      guy.move(1)
+    end
   end
 
 
