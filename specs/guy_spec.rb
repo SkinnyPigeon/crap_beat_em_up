@@ -34,7 +34,7 @@ class TestGuy < MiniTest::Test
   end
 
   def test_guy_moves_right
-    assert_equal(4, @guy1.right(@guy1))
+    assert_equal(4, @guy1.move_right(@guy1))
   end
 
 end

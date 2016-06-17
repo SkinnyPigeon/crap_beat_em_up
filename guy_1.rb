@@ -20,14 +20,14 @@ class Guy
 
   def move_left(guy)
     move = gets.chomp
-    if move = "a"
+    if move == "a"
       guy.move(-1)
     end
   end  
 
   def move_right(guy)
     move = gets.chomp
-    if move = "d"
+    if move == "d"
       guy.move(1)
     end
   end
