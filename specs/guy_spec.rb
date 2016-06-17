@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/rg'
+require 'pry-byebug'
 require_relative '../guy'
 require_relative '../arena'
 
@@ -32,23 +33,31 @@ class TestGuy < MiniTest::Test
     assert_equal(3, @guy1.position)
   end
 
-  # def test_guy_moves_left
-  #   assert_equal(2, @guy1.move_left(@guy1))
-  # end
-
-  # def test_guy_moves_right
-  #   assert_equal(4, @guy1.move_right(@guy1))
-  # end
-
-  # def test_guy_gets_punched
-  #   assert_equal(4, @guy1.punch(@guy2))
-  # end
-
   def test_guy_gets_kicked
-    assert_equal(3, @guy1.kick(@guy2))
+    # @guy1.chance_of_bonus_damage(@guy1)
+    assert_equal(4, @guy1.kick(@guy1,@guy2))
   end
 
+
+
 end
+
+
+# def test_random_generator
+#   assert_equal(4, @guy1.chance_of_bonus_damage)
+# end
+
+# def test_guy_moves_left
+#   assert_equal(2, @guy1.move_left(@guy1))
+# end
+
+# def test_guy_moves_right
+#   assert_equal(4, @guy1.move_right(@guy1))
+# end
+
+# def test_guy_gets_punched
+#   assert_equal(4, @guy1.punch(@guy2))
+# end
 
 
 
