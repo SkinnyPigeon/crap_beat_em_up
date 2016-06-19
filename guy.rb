@@ -14,7 +14,6 @@ class Guy
     @position = position
     @bonus = 0
     @block = 0
-    @super = 0
   end
 
   
@@ -27,11 +26,21 @@ class Guy
   end
 
   def hurt(health)
-    @health += @block
-    @health -= health
-    @health -= @block
+    @block -= health
+    if @block < 0
+      @health += @block
+    end
     @block = 0
   end  
+
+
+  # def hurt(health)
+  #   @health += @block
+  #   @health -= health
+  #   @health -= @block
+  #   @block = 0
+  # end  
+
 
 
   def block
@@ -42,9 +51,11 @@ class Guy
     end
   end 
 
-  def chance_of_bonus_damage(guy)
+  def chance_of_bonus_damage
     chance = rand(20)
-    if chance > 16
+    if chance > 19
+      return @bonus = 3
+    elsif chance > 14
       return @bonus = 2
     else
       return @bonus = 1
@@ -52,9 +63,11 @@ class Guy
   end
 
 
-  def pain(bonus)
-    @health += @block 
-    @health -= bonus
+  def pain
+    @block -= @bonus
+    if @block < 0
+      @health += @block
+    end
     @block = 0
   end
 
@@ -87,11 +100,13 @@ class Guy
 
 
   def kick(guy1, guy2)
-    guy1.chance_of_bonus_damage(guy1)
+    guy2.chance_of_bonus_damage
     hit = gets.chomp
     if hit == "s" || hit == ";"
-      guy2.pain(@bonus)
+      guy2.pain
+      @bonus = 0
       guy1.move_energy(2)
+      @bonus = 0
     end
   end
 
@@ -100,3 +115,6 @@ class Guy
 
 
 end
+
+a=Guy.new("a", "@", 3)
+b=Guy.new("b", "!", 4)
