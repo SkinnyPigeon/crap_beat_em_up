@@ -22,6 +22,18 @@ class Guy
     return if @energy >= 1 
   end
 
+  def clear_left(guy1, arena)
+    check_left = guy1.position
+    check_left - 1
+    arena[check_left].eql?(0)
+  end
+
+  def clear_right(guy1, arena)
+    check_right = guy1.position
+    check_right - 1
+    arena[check_right].eql?(0)
+  end
+
 
   def move(spaces)
     @position += spaces

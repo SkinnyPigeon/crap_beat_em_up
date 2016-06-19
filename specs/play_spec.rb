@@ -19,7 +19,6 @@ class TestPlay < MiniTest::Test
 
   def test_play_works
     @play.run
-    # binding.pry
     assert_equal(false, @game.win?)
   end
 
