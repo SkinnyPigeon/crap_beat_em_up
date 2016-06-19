@@ -4,7 +4,7 @@ require_relative 'game'
 
 class Guy
 
-  attr_reader(:name, :icon, :health, :energy, :starting_position, :position, :bonus, :block, :super)
+  attr_reader(:name, :icon, :health, :energy, :starting_position, :position, :opponent_bonus, :block, :opponent_special)
 
   def initialize(name, icon, position)
     @name = name
@@ -12,8 +12,9 @@ class Guy
     @health = 5
     @energy = 3
     @position = position
-    @bonus = 0
+    @opponent_bonus = 0
     @block = 0
+    @opponent_special = 3
   end
 
   
@@ -34,15 +35,6 @@ class Guy
   end  
 
 
-  # def hurt(health)
-  #   @health += @block
-  #   @health -= health
-  #   @health -= @block
-  #   @block = 0
-  # end  
-
-
-
   def block
       @block = 0
     block = gets.chomp
@@ -54,17 +46,17 @@ class Guy
   def chance_of_bonus_damage
     chance = rand(20)
     if chance > 19
-      return @bonus = 3
+      return @opponent_bonus = 3
     elsif chance > 14
-      return @bonus = 2
+      return @opponent_bonus = 2
     else
-      return @bonus = 1
+      return @opponent_bonus = 1
     end
   end
 
 
   def pain
-    @block -= @bonus
+    @block -= @opponent_bonus
     if @block < 0
       @health += @block
     end
@@ -104,13 +96,27 @@ class Guy
     hit = gets.chomp
     if hit == "s" || hit == ";"
       guy2.pain
-      @bonus = 0
       guy1.move_energy(2)
-      @bonus = 0
+      @opponent_bonus = 0
     end
   end
 
+  def opponent_special
+    @block -= @opponent_special
+    if @block < 0
+      @health += @block
+    end
+    @opponent_special = 0
+    @block = 0
+  end
 
+  def special(guy1, guy2)
+    hit = gets.chomp
+    if hit == "e" || hit == "["
+      guy2.opponent_special
+      guy1.move_energy(3)
+    end
+  end
 
 
 
