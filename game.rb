@@ -16,6 +16,10 @@ class Game
 
   def turn_ended
     @current_player = @players.rotate![0]
+    if @current_player.energy == 3
+      return
+    else @current_player.add_energy
+    end
   end
 
   def win?

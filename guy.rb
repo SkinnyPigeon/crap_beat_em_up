@@ -10,7 +10,7 @@ class Guy
     @name = name
     @icon = icon
     @health = 5
-    @energy = 3
+    @energy = 2
     @position = position
     @opponent_bonus = 0
     @block = 0
@@ -129,6 +129,10 @@ class Guy
     if hit == " "
       game.turn_ended 
     end
+  end
+
+  def add_energy
+    @energy += 1
   end
 
 end

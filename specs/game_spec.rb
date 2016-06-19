@@ -29,9 +29,13 @@ class TestArena < MiniTest::Test
   end
 
   def test_game_over
-    @game.current_player.punch(@game.current_player, @game.other_player)
-    assert_equal(true, @game.win?)
-
+    assert_equal(false, @game.win?)
   end
+
+  def test_player_regains_energy
+    @game.turn_ended
+    assert_equal(3, @game.current_player.energy)
+  end
+
 
 end
