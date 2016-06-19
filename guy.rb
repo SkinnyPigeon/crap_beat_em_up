@@ -4,7 +4,7 @@ require_relative 'game'
 
 class Guy
 
-  attr_reader(:name, :icon, :health, :energy, :starting_position, :position, :bonus)
+  attr_reader(:name, :icon, :health, :energy, :starting_position, :position, :bonus, :block, :super)
 
   def initialize(name, icon, position)
     @name = name
@@ -13,6 +13,8 @@ class Guy
     @energy = 3
     @position = position
     @bonus = 0
+    @block = 0
+    @super = 0
   end
 
   
@@ -25,9 +27,20 @@ class Guy
   end
 
   def hurt(health)
+    @health += @block
     @health -= health
+    @health -= @block
+    @block = 0
   end  
 
+
+  def block
+      @block = 0
+    block = gets.chomp
+    if block == "q" || block == "o"
+      @block = 2
+    end
+  end 
 
   def chance_of_bonus_damage(guy)
     chance = rand(20)
@@ -40,7 +53,9 @@ class Guy
 
 
   def pain(bonus)
+    @health += @block 
     @health -= bonus
+    @block = 0
   end
 
 
@@ -65,7 +80,7 @@ class Guy
   def punch(guy1, guy2)
     hit = gets.chomp
     if hit == "w" || hit == "p"
-      guy2.hurt(5)
+      guy2.hurt(1)
       guy1.move_energy(1)
     end
   end  
@@ -80,12 +95,7 @@ class Guy
     end
   end
 
-  # def block(guy1, guy2)
-  #   block = gets.chomp
-  #   if block == "q"
-  #     return true
-  #   end
-  # end 
+
 
 
 

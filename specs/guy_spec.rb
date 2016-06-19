@@ -37,37 +37,35 @@ class TestGuy < MiniTest::Test
   end
 
 
-  def test_movement
-    @game.current_player.movement(@game.current_player, @arena)
-    assert_equal(2, @game.current_player.position)
+  def test_guy_can_block
+    assert_equal(2, @game.current_player.block)
   end
-
-
-  def test_guy_moves_right
-    @game.current_player.movement(@game.current_player, @arena)
-    assert_equal(4, @game.current_player.position)
-  end
-
-
-  # def test_guy_gets_kicked
-  #   @game.current_player.kick(@game.current_player, @game.other_player)
-  #   assert_equal(4, @game.other_player.health)
-  # end
-
-
-  # def test_random_generator
-  #   assert_equal(1, @guy1.chance_of_bonus_damage(@guy1))
-  # end
-
-
-  # def test_guy_can_block
-  #   assert_equal(5, @guy1.block(@guy1, @guy2))
-  # end
 
 end
 
 
 
+# def test_movement
+#   @game.current_player.movement(@game.current_player, @arena)
+#   assert_equal(2, @game.current_player.position)
+# end
+
+
+# def test_guy_moves_right
+#   @game.current_player.movement(@game.current_player, @arena)
+#   assert_equal(4, @game.current_player.position)
+# end
+
+
+# def test_guy_gets_kicked
+#   @game.current_player.kick(@game.current_player, @game.other_player)
+#   assert_equal(4, @game.other_player.health)
+# end
+
+
+# def test_random_generator
+#   assert_equal(1, @guy1.chance_of_bonus_damage(@guy1))
+# end
 
 
 
