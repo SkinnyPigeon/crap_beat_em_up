@@ -37,7 +37,7 @@ class TestGuy < MiniTest::Test
   end
 
   def test_guy_moves_left
-    @game.current_player.move_left(@game.current_player)
+    @game.current_player.move_left(@game.current_player, @arena)
     assert_equal(2, @game.current_player.position)
   end
 
