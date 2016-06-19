@@ -3,7 +3,7 @@ require 'minitest/rg'
 require 'pry-byebug'
 require_relative '../guy'
 require_relative '../arena'
-require_relative '../play'
+require_relative '../game'
 
 class TestGuy < MiniTest::Test
 
@@ -43,11 +43,11 @@ class TestGuy < MiniTest::Test
   end
 
 
-  # def test_guy_moves_right
-  #   @game.current_player.move_right(@game.current_player, @arena)
-  #   assert_equal(2, @game.current_player.position)
-  # end
-  
+  def test_guy_moves_right
+    @game.current_player.movement(@game.current_player, @arena)
+    assert_equal(4, @game.current_player.position)
+  end
+
 
   # def test_guy_gets_kicked
   #   @game.current_player.kick(@game.current_player, @game.other_player)

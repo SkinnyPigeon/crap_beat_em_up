@@ -1,6 +1,6 @@
 require 'pry-byebug'
 require_relative 'arena'
-require_relative 'play'
+require_relative 'game'
 
 class Guy
 
@@ -62,12 +62,10 @@ class Guy
   end
 
 
-
-
   def punch(guy1, guy2)
     hit = gets.chomp
     if hit == "w" || hit == "p"
-      guy2.hurt(1)
+      guy2.hurt(5)
       guy1.move_energy(1)
     end
   end  

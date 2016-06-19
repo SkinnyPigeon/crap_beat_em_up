@@ -3,7 +3,7 @@ require 'minitest/rg'
 require 'pry-byebug'
 require_relative '../arena'
 require_relative '../guy'
-require_relative '../play'
+require_relative '../game'
 
 class TestArena < MiniTest::Test
 

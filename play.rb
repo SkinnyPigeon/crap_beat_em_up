@@ -1,22 +1,37 @@
 require_relative 'guy'
 require_relative 'arena'
+require_relative 'game'
+require 'pry-byebug'
 
-class Game
 
-  attr_reader(:current_player, :other_player, :winner, :log)
+class Play
 
-  def initialize(players, arena)
-    @players = players
+
+  attr_reader(:game, :arena, :players)
+
+  def initialize(game, arena, players)
+    @game = game
     @arena = arena
-    @current_player = players[0]
-    @other_player = players[1]
-    @winner = nil
-    @log = []
+    @players = players
+
+
+    @guy1=Guy.new("Poo", "💩", 3)
+    @guy2=Guy.new("Ghost", "👻", 4)
+    @players = [@guy1, @guy2]
+    @arena=Arena.new(7)
+    @game=Game.new(@players, @arena)
+
   end
 
-  def turn_ended
-    @current_player = @players.rotate![0]
+  def run
+    @arena=Arena.new(7)
+    @game=Game.new(@players, @arena)
+    @arena.spawn_players(@guy1, @guy2)
+    binding.pry
   end
-
 
 end
+
+
+@play=Play.new(@game, @arena, @players)
+@play.run()
