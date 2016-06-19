@@ -17,3 +17,6 @@ class Arena
   end
 
 end
+
+arena=Arena.new(7)
+# arena.spawn_players(a,b)

@@ -37,18 +37,19 @@ class TestGuy < MiniTest::Test
   end
 
 
-  # def test_guy_can_end_round
-  #   @game.current_player.end_turn(@game)
-  #   assert_equal("Ghost", @game.current_player.name)
-  # end
-
   def test_if_guy_is_next_to_someone
-    # binding.pry
-    assert_equal(true, @guy1.clear_left(@guy1, @arena.state))
+    arena = @arena.state
+    assert_equal(true, @guy1.check_left(@guy1, arena))
   end
 
 
 end
+
+
+# def test_guy_can_end_round
+#   @game.current_player.end_turn(@game)
+#   assert_equal("Ghost", @game.current_player.name)
+# end
 
 # def test_guy_can_block
 #   assert_equal(2, @game.current_player.block)

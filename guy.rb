@@ -22,16 +22,16 @@ class Guy
     return if @energy >= 1 
   end
 
-  def clear_left(guy1, arena)
-    check_left = guy1.position
-    check_left - 1
-    arena[check_left].eql?(0)
+  def check_left(guy1, arena)
+    check = guy1.position
+    check = check - 1
+    arena[check].eql?(0)
   end
 
-  def clear_right(guy1, arena)
-    check_right = guy1.position
-    check_right - 1
-    arena[check_right].eql?(0)
+  def check_right(guy1, arena)
+    check = guy1.position
+    check = check + 1
+    arena[check].eql?(0)
   end
 
 
@@ -45,22 +45,32 @@ class Guy
 
 
   def move_right(guy, arena)
-    hit = gets.chomp
-    if hit == "d" || hit == "'"
-      arena.state.delete_at(guy.position)
-      guy.move(1)
-      guy.move_energy(1)
-      arena.state.insert(guy.position, guy)
+    arena = arena.state
+    if guy.check_right(guy, arena) == false
+      return
+    else
+      hit = gets.chomp
+      if hit == "d" || hit == "'"
+        arena.delete_at(guy.position)
+        guy.move(1)
+        guy.move_energy(1)
+        arena.insert(guy.position, guy)
+      end
     end
   end
 
   def move_left(guy, arena)
-    hit = gets.chomp
-    if hit == "a" || hit == "l"
-      arena.state.delete_at(guy.position)
-      guy.move(-1)
-      guy.move_energy(1)
-      arena.state.insert(guy.position, guy)
+    arena = arena.state
+    if guy.check_left(guy, arena) == false
+      return
+    else
+      hit = gets.chomp
+      if hit == "a" || hit == "l"
+        arena.delete_at(guy.position)
+        guy.move(-1)
+        guy.move_energy(1)
+        arena.insert(guy.position, guy)
+      end
     end
   end
 
