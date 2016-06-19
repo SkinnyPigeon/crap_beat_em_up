@@ -10,7 +10,7 @@ class Guy
     @name = name
     @icon = icon
     @health = 5
-    @energy = 2
+    @energy = 3
     @position = position
     @opponent_bonus = 0
     @block = 0
@@ -19,9 +19,10 @@ class Guy
 
 
   def can_move(guy1)
-    return if @move_energy > 0 
+    return if @energy >= 1 
   end
-  
+
+
   def move(spaces)
     @position += spaces
   end
@@ -50,9 +51,8 @@ class Guy
 
 
   def block(guy1)
-      @block = 0
-    block = gets.chomp
-    if block == "q" || block == "o"
+    hit = gets.chomp
+    if hit == "q" || hit == "o"
       @block = 2
       guy1.move_energy(2)
     end
