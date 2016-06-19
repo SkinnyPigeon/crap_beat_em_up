@@ -34,7 +34,6 @@ class Guy
 
   def move_right(guy, arena)
     hit = gets.chomp
-
     if hit == "d" || hit == "'"
       arena.state.delete_at(guy.position)
       guy.move(1)
@@ -45,7 +44,6 @@ class Guy
 
   def move_left(guy, arena)
     hit = gets.chomp
-
     if hit == "a" || hit == "l"
       arena.state.delete_at(guy.position)
       guy.move(-1)
