@@ -1,6 +1,6 @@
 class Arena
 
-  attr_accessor(:size)
+  attr_accessor(:size, :state)
 
 
   def initialize(size)
@@ -11,10 +11,9 @@ class Arena
     return @state.length
   end
 
-  def set_up_positions(positions)
-    for key in positions.keys
-      @state[key] = positions[key]
-    end
+
+  def spawn_players(guy1, guy2)
+    @state.insert(guy1.position, guy1)  && @state.insert(guy2.position, guy2)
   end
 
 end

@@ -1,4 +1,6 @@
 require 'pry-byebug'
+require_relative 'arena'
+require_relative 'play'
 
 class Guy
 
@@ -44,7 +46,7 @@ class Guy
 
   def move_left(guy)
     move = gets.chomp
-    if move == "a"
+    if move == "a" || move == "l"
       guy.move(-1)
       guy.move_energy(1)
     end
@@ -53,7 +55,7 @@ class Guy
 
   def move_right(guy)
     move = gets.chomp
-    if move == "d"
+    if move == "d" || move == "'"
       guy.move(1)
       guy.move_energy(1)
     end
@@ -62,7 +64,7 @@ class Guy
 
   def punch(guy1, guy2)
     hit = gets.chomp
-    if hit == "w"
+    if hit == "w" || hit == "p"
       guy2.hurt(1)
       guy1.move_energy(1)
     end
@@ -72,11 +74,18 @@ class Guy
   def kick(guy1, guy2)
     guy1.chance_of_bonus_damage(guy1)
     hit = gets.chomp
-    if hit == "s"
+    if hit == "s" || hit == ";"
       guy2.pain(@bonus)
       guy1.move_energy(2)
     end
   end
+
+  # def block(guy1, guy2)
+  #   block = gets.chomp
+  #   if block == "q"
+  #     return true
+  #   end
+  # end 
 
 
 
