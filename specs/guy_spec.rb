@@ -37,9 +37,19 @@ class TestGuy < MiniTest::Test
   end
 
 
-  def test_guy_can_block
-    assert_equal(2, @game.current_player.block)
+  def test_guy_can_end_round
+    @game.current_player.end_turn(@game)
+    assert_equal("Ghost", @game.current_player.name)
   end
+
+  # def test_guy_can_block
+  #   assert_equal(2, @game.current_player.block)
+  # end
+
+  # def test_can_only_move_with_energy
+  #   binding.pry
+  #   assert_equal("Please try another move", @game.current_player.can_move(@game.current_player))
+  # end
 
 end
 
