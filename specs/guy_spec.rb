@@ -36,10 +36,18 @@ class TestGuy < MiniTest::Test
     assert_equal(3, @game.current_player.position)
   end
 
-  def test_guy_moves_left
-    @game.current_player.move_left(@game.current_player, @arena)
+
+  def test_movement
+    @game.current_player.movement(@game.current_player, @arena)
     assert_equal(2, @game.current_player.position)
   end
+
+
+  # def test_guy_moves_right
+  #   @game.current_player.move_right(@game.current_player, @arena)
+  #   assert_equal(2, @game.current_player.position)
+  # end
+  
 
   # def test_guy_gets_kicked
   #   @game.current_player.kick(@game.current_player, @game.other_player)
