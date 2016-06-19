@@ -32,16 +32,21 @@ class Guy
   end
 
 
-  def movement(guy, arena)
-    move = gets.chomp
+  def move_right(guy, arena)
+    hit = gets.chomp
 
-    if move == "d" || move == "'"
+    if hit == "d" || hit == "'"
       arena.state.delete_at(guy.position)
       guy.move(1)
       guy.move_energy(1)
       arena.state.insert(guy.position, guy)
+    end
+  end
 
-    else move == "a" || move == "l"
+  def move_left(guy, arena)
+    hit = gets.chomp
+
+    if hit == "a" || hit == "l"
       arena.state.delete_at(guy.position)
       guy.move(-1)
       guy.move_energy(1)
