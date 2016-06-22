@@ -56,8 +56,8 @@ def run
         @game.current_player.move_right(@game.current_player, @arena)
         @game.update_stats
       end
-
   end
+  puts "Congratulations #{@game.current_player.icon}"
 end
 
 

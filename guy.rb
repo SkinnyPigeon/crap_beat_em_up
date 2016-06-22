@@ -74,7 +74,7 @@ class Guy
       return
     else
       @block = 2
-      guy1.move_energy(2)
+      guy1.move_energy(1)
     end
   end 
 
@@ -103,7 +103,7 @@ class Guy
     chance = rand(20)
     if chance > 19
       return @opponent_bonus = 3
-    elsif chance > 14
+    elsif chance > 7
       return @opponent_bonus = 2
     else
       return @opponent_bonus = 1
