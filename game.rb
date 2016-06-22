@@ -11,8 +11,14 @@ class Game
     @arena = arena
     @current_player = players[0]
     @other_player = players[1]
-    @winner = nil
-    @log = []
+  end
+
+  def random_start
+    chance = rand(20)
+    if chance > 10
+      @current_player = @players.rotate![0]
+    else return
+    end
   end
 
   def turn_ended

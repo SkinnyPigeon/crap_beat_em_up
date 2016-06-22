@@ -1,7 +1,7 @@
 require_relative("arena")
 require_relative("game")
 require_relative("guy")
-require("pry-byebug")
+
 
 @guy1=Guy.new("Poo", "💩", 3)
 @guy2=Guy.new("Ghost", "👻",6)
@@ -9,13 +9,13 @@ require("pry-byebug")
 @arena=Arena.new(8)
 @game=Game.new(@players, @arena)
 @arena.spawn_players(@guy1,@guy2)
-
+@game.random_start
 def run
   while @game.win? == false
     
     system"clear"
-    puts "Left: A or L   Right: D or '   Punch: W or P   Kick: S or ;   Block: Q or O   Super: E or [ "
-    puts "1 Energy       1 Energy        1 Energy        2 Energy       1 Energy        3 Energy"
+    puts "Left: A or L  Right: D or '  Punch: W or P  Kick: S or ;  Block: Q or O  Super: E or [  End Go: Space"
+    puts "  1 Energy      1 Energy       1 Energy       2 Energy      1 Energy       3 Energy    Regain 2 Energy"
     puts
     puts
     puts "#{@guy1.name}'s Health: #{@guy1.health}         #{@guy2.name}'s Health: #{@guy2.health} "

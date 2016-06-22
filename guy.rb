@@ -1,4 +1,3 @@
-require 'pry-byebug'
 require_relative 'arena'
 require_relative 'game'
 
