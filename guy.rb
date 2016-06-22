@@ -18,10 +18,6 @@ class Guy
   end
 
 
-  # def can_move(guy1)
-  #   return if @energy >= 1 
-  # end
-
   def check_left(guy1, arena)
       check = guy1.position
       check = check - 1
@@ -48,6 +44,8 @@ class Guy
     arena = arena.state
     if guy.check_right(guy, arena) == false
       return
+    elsif @energy <=0
+      return
     else
       arena.delete_at(guy.position)
       guy.move(1)
@@ -56,24 +54,28 @@ class Guy
     end
   end
 
-  def move_left(guy, arena)
+  def move_left(guy1, arena)
     arena = arena.state
-    if guy.check_left(guy, arena) == false
+    if guy1.check_left(guy1, arena) == false
       return
     elsif @energy <=0
       return
     else
-      arena.delete_at(guy.position)
-      guy.move(-1)
-      guy.move_energy(1)
-      arena.insert(guy.position, guy.icon)
+      arena.delete_at(guy1.position)
+      guy1.move(-1)
+      guy1.move_energy(1)
+      arena.insert(guy1.position, guy1.icon)
     end
   end
 
 
   def block(guy1)
-    @block = 2
-    guy1.move_energy(2)
+    if @energy <=1
+      return
+    else
+      @block = 2
+      guy1.move_energy(2)
+    end
   end 
 
 
@@ -85,9 +87,15 @@ class Guy
     @block = 0
   end  
 
-  def punch(guy1, guy2)
+  def punch(guy1, guy2, arena)
+    if guy1.check_left(guy1, arena) && guy1.check_right(guy1, arena) == true
+    return 
+    elsif @energy <= 0
+      return
+    else
       guy2.punch_setup(1)
       guy1.move_energy(1)
+    end
   end  
 
 
@@ -110,11 +118,17 @@ class Guy
     @block = 0
   end
 
-  def kick(guy1, guy2)
-    guy2.chance_of_bonus_kick_damage
+  def kick(guy1, guy2, arena)
+    if guy1.check_left(guy1, arena) && guy1.check_right(guy1, arena) == true
+    return 
+    elsif @energy <=1
+      return
+    else
+      guy2.chance_of_bonus_kick_damage
       guy2.kick_setup
       guy1.move_energy(2)
       @opponent_bonus = 0
+    end
   end
 
 
@@ -128,8 +142,12 @@ class Guy
   end
 
   def special(guy1, guy2)
-    guy2.special_setup
-    guy1.move_energy(3)
+    if @energy <=2
+      return
+    else
+      guy2.special_setup
+      guy1.move_energy(3)
+    end
   end
 
 
@@ -139,10 +157,7 @@ class Guy
   end
 
   def add_energy
-    @energy += 1
+    @energy += 2
   end
 
 end
-
-# a=Guy.new("a", "@", 3)
-# b=Guy.new("b", "!", 4)

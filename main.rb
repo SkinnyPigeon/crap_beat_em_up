@@ -21,7 +21,7 @@ def run
     puts
     puts
     puts "#{@guy1.name}'s Health: #{@guy1.health}         #{@guy2.name}'s Health: #{@guy2.health} "
-    puts "#{@guy1.name}'s Energy: #{@guy1.health}         #{@guy2.name}'s Energy: #{@guy2.health} "
+    puts "#{@guy1.name}'s Energy: #{@guy1.energy}         #{@guy2.name}'s Energy: #{@guy2.energy} "
     puts 
     print @arena.state
     puts
@@ -30,13 +30,13 @@ def run
     case 
 
       when hit == "w" || hit == "p"
-        @game.current_player.punch(@game.current_player, @game.other_player)
+        @game.current_player.punch(@game.current_player, @game.other_player, @arena.state)
         @game.update_stats
       when hit == "q" || hit == "o"
         @game.current_player.block(@game.current_player)
         @game.update_stats
       when hit == "s" || hit == ";"
-        @game.current_player.kick(@game.current_player, @game.other_player)
+        @game.current_player.kick(@game.current_player, @game.other_player, @arena.state)
         @game.update_stats
       when hit == "e" || hit == "["
         @game.current_player.special(@game.current_player, @game.other_player)
