@@ -15,7 +15,7 @@ def run
     
     system"clear"
     puts "Left: A or L   Right: D or '   Punch: W or P   Kick: S or ;   Block: Q or O   Super: E or [ "
-    puts "1 Energy       1 Energy        1 Energy        2 Energy       2 Energy        3 Energy"
+    puts "1 Energy       1 Energy        1 Energy        2 Energy       1 Energy        3 Energy"
     puts
     puts
     puts "#{@guy1.name}'s Health: #{@guy1.health}         #{@guy2.name}'s Health: #{@guy2.health} "
