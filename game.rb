@@ -17,6 +17,7 @@ class Game
 
   def turn_ended
     @current_player = @players.rotate![0]
+    @other_player = @players[1]
     if @current_player.energy >= 3
       return
     elsif @current_player.energy == 2 

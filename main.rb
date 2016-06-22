@@ -25,11 +25,15 @@ def run
     puts 
     print @arena.state
     puts
-    puts "Please enter your move: "
+        puts "#{@game.current_player.name} Please enter your move : "
     hit = gets.chomp
     case 
-
+      when hit == " "
+        @game.current_player.end_turn(@game)
+        @game.update_stats
       when hit == "w" || hit == "p"
+        binding.pry
+        nil
         @game.current_player.punch(@game.current_player, @game.other_player, @arena.state)
         @game.update_stats
       when hit == "q" || hit == "o"
@@ -46,9 +50,6 @@ def run
         @game.update_stats
       when hit == "d" || hit == "'"
         @game.current_player.move_right(@game.current_player, @arena)
-        @game.update_stats
-      when hit == " "
-        @game.current_player.end_turn(@game)
         @game.update_stats
       end
   end
