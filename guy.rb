@@ -157,7 +157,7 @@ class Guy
     if (guy1.special_check_left(guy1, arena) && guy1.special_check_right(guy1, arena) && 
        guy1.check_left(guy1, arena) && guy1.check_right(guy1, arena) == true) 
     return 
-    elsif @opponent_special == 0
+    elsif guy2.opponent_special == 0
       return
     elsif @energy <=2
       return
