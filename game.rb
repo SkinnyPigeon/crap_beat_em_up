@@ -1,5 +1,6 @@
 require_relative 'guy'
 require_relative 'arena'
+require('pry-byebug')
 
 class Game
 
@@ -16,9 +17,14 @@ class Game
 
   def turn_ended
     @current_player = @players.rotate![0]
-    if @current_player.energy == 3
+    if @current_player.energy >= 3
       return
-    else @current_player.add_energy
+    elsif @current_player.energy == 2 
+      @current_player.add_energy_1
+      return
+    else @current_player.energy <= 1
+      @current_player.add_energy_2
+      return 
     end
   end
 
@@ -32,4 +38,3 @@ class Game
 
 
 end
-# game=Game.new(players, arena)

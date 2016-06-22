@@ -4,9 +4,9 @@ require_relative("guy")
 require("pry-byebug")
 
 @guy1=Guy.new("Poo", "💩", 3)
-@guy2=Guy.new("Ghost", "👻", 5)
+@guy2=Guy.new("Ghost", "👻",4)
 @players = [@guy1, @guy2]
-@arena=Arena.new(7)
+@arena=Arena.new(8)
 @game=Game.new(@players, @arena)
 @arena.spawn_players(@guy1,@guy2)
 
@@ -39,7 +39,7 @@ def run
         @game.current_player.kick(@game.current_player, @game.other_player, @arena.state)
         @game.update_stats
       when hit == "e" || hit == "["
-        @game.current_player.special(@game.current_player, @game.other_player)
+        @game.current_player.special(@game.current_player, @game.other_player, @arena.state)
         @game.update_stats
       when hit == "a" || hit == "l"
         @game.current_player.move_left(@game.current_player, @arena)
@@ -57,6 +57,3 @@ end
 
 
 run
-
-# binding.pry
-# nil

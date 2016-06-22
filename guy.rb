@@ -131,6 +131,18 @@ class Guy
     end
   end
 
+  def special_check_left(guy1, arena)
+      check = guy1.position
+      check = check - 2
+      arena[check].eql?(0)
+  end
+
+  def special_check_right(guy1, arena)
+    check = guy1.position
+    check = check + 2
+    arena[check].eql?(0)
+  end
+
 
   def special_setup
     @block -= @opponent_special
@@ -141,8 +153,13 @@ class Guy
     @block = 0
   end
 
-  def special(guy1, guy2)
-    if @energy <=2
+  def special(guy1, guy2, arena)
+    if (guy1.special_check_left(guy1, arena) && guy1.special_check_right(guy1, arena) && 
+       guy1.check_left(guy1, arena) && guy1.check_right(guy1, arena) == true) 
+    return 
+    elsif @opponent_special == 0
+      return
+    elsif @energy <=2
       return
     else
       guy2.special_setup
@@ -156,8 +173,12 @@ class Guy
     game.turn_ended 
   end
 
-  def add_energy
+  def add_energy_2
     @energy += 2
+  end  
+
+  def add_energy_1
+    @energy += 1
   end
 
 end
