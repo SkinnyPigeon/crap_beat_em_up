@@ -23,8 +23,13 @@ class Game
   end
 
   def win?
-    return @other_player.health == 0
+    return @other_player.health <= 0
+  end
+
+  def update_stats
+    return @current_player.health && @other_player.energy
   end
 
 
 end
+# game=Game.new(players, arena)

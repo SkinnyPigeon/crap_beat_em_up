@@ -4,7 +4,7 @@ require_relative 'game'
 
 class Guy
 
-  attr_reader(:name, :icon, :health, :energy, :starting_position, :position, :opponent_bonus, :block, :opponent_special)
+  attr_accessor(:name, :icon, :health, :energy, :starting_position, :position, :opponent_bonus, :block, :opponent_special)
 
   def initialize(name, icon, position)
     @name = name
@@ -18,14 +18,14 @@ class Guy
   end
 
 
-  def can_move(guy1)
-    return if @energy >= 1 
-  end
+  # def can_move(guy1)
+  #   return if @energy >= 1 
+  # end
 
   def check_left(guy1, arena)
-    check = guy1.position
-    check = check - 1
-    arena[check].eql?(0)
+      check = guy1.position
+      check = check - 1
+      arena[check].eql?(0)
   end
 
   def check_right(guy1, arena)
@@ -49,13 +49,10 @@ class Guy
     if guy.check_right(guy, arena) == false
       return
     else
-      hit = gets.chomp
-      if hit == "d" || hit == "'"
-        arena.delete_at(guy.position)
-        guy.move(1)
-        guy.move_energy(1)
-        arena.insert(guy.position, guy)
-      end
+      arena.delete_at(guy.position)
+      guy.move(1)
+      guy.move_energy(1)
+      arena.insert(guy.position, guy.icon)
     end
   end
 
@@ -63,24 +60,20 @@ class Guy
     arena = arena.state
     if guy.check_left(guy, arena) == false
       return
+    elsif @energy <=0
+      return
     else
-      hit = gets.chomp
-      if hit == "a" || hit == "l"
-        arena.delete_at(guy.position)
-        guy.move(-1)
-        guy.move_energy(1)
-        arena.insert(guy.position, guy)
-      end
+      arena.delete_at(guy.position)
+      guy.move(-1)
+      guy.move_energy(1)
+      arena.insert(guy.position, guy.icon)
     end
   end
 
 
   def block(guy1)
-    hit = gets.chomp
-    if hit == "q" || hit == "o"
-      @block = 2
-      guy1.move_energy(2)
-    end
+    @block = 2
+    guy1.move_energy(2)
   end 
 
 
@@ -93,11 +86,8 @@ class Guy
   end  
 
   def punch(guy1, guy2)
-    hit = gets.chomp
-    if hit == "w" || hit == "p"
       guy2.punch_setup(1)
       guy1.move_energy(1)
-    end
   end  
 
 
@@ -121,13 +111,10 @@ class Guy
   end
 
   def kick(guy1, guy2)
-    guy2.chance_of_bonus_damage
-    hit = gets.chomp
-    if hit == "s" || hit == ";"
+    guy2.chance_of_bonus_kick_damage
       guy2.kick_setup
       guy1.move_energy(2)
       @opponent_bonus = 0
-    end
   end
 
 
@@ -141,19 +128,14 @@ class Guy
   end
 
   def special(guy1, guy2)
-    hit = gets.chomp
-    if hit == "e" || hit == "["
-      guy2.special_setup
-      guy1.move_energy(3)
-    end
+    guy2.special_setup
+    guy1.move_energy(3)
   end
 
 
   def end_turn(game)
     hit = gets.chomp
-    if hit == " "
-      game.turn_ended 
-    end
+    game.turn_ended 
   end
 
   def add_energy
@@ -162,5 +144,5 @@ class Guy
 
 end
 
-a=Guy.new("a", "@", 3)
-b=Guy.new("b", "!", 4)
+# a=Guy.new("a", "@", 3)
+# b=Guy.new("b", "!", 4)

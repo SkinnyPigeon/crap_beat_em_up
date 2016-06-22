@@ -33,5 +33,5 @@ class Play
 end
 
 
-@play=Play.new(@game, @arena, @players)
-@play.run()
+# @play=Play.new(@game, @arena, @players)
+# @play.run()
