@@ -18,14 +18,14 @@ def run
     puts "1 Energy       1 Energy        1 Energy        2 Energy       2 Energy        3 Energy"
     puts
     puts
-    puts
-    puts
     puts "#{@guy1.name}'s Health: #{@guy1.health}         #{@guy2.name}'s Health: #{@guy2.health} "
     puts "#{@guy1.name}'s Energy: #{@guy1.energy}         #{@guy2.name}'s Energy: #{@guy2.energy} "
     puts 
-    print @arena.state
+    puts 
+    print "#{@arena.state.join(" ")}"
     puts
-        puts "#{@game.current_player.name} Please enter your move : "
+    puts
+    puts "#{@game.current_player.name} Please enter your move : "
     hit = gets.chomp
     case 
       when hit == " "

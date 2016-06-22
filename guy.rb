@@ -21,13 +21,13 @@ class Guy
   def check_left(guy1, arena)
       check = guy1.position
       check = check - 1
-      arena[check].eql?(0)
+      arena[check].eql?("_")
   end
 
   def check_right(guy1, arena)
     check = guy1.position
     check = check + 1
-    arena[check].eql?(0)
+    arena[check].eql?("_")
   end
 
 
@@ -70,7 +70,7 @@ class Guy
 
 
   def block(guy1)
-    if @energy <=1
+    if @energy <=0
       return
     else
       @block = 2

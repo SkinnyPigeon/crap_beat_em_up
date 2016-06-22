@@ -4,7 +4,7 @@ class Arena
 
 
   def initialize(size)
-    @state = Array.new(size, 0)
+    @state = Array.new(size, "_")
   end
 
   def size
@@ -21,6 +21,3 @@ class Arena
   end
 
 end
-
-# arena=Arena.new(7)
-# arena.spawn_players(a,b)
