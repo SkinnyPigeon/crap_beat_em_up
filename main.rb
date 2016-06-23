@@ -1,6 +1,7 @@
 require_relative("arena")
 require_relative("game")
 require_relative("guy")
+# require_relative("random_text")
 
 
 @guy1=Guy.new("Poo", "💩", 3)
@@ -10,6 +11,8 @@ require_relative("guy")
 @game=Game.new(@players, @arena)
 @arena.spawn_players(@guy1,@guy2)
 @game.random_start
+# @random_text=Text.new()
+
 def run
   while @game.win? == false
     

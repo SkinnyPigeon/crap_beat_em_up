@@ -168,7 +168,6 @@ class Guy
 
 
   def end_turn(game)
-    hit = gets.chomp
     game.turn_ended 
   end
 
