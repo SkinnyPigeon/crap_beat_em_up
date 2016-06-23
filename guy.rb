@@ -55,7 +55,7 @@ class Guy
 
   def dash_right(guy, arena, game)
     arena = arena.state
-    if (guy.check_right(guy, arena) && guy.special_check_right(guy, arena) == false)
+    if (guy.check_right(guy, arena) && guy.special_check_right(guy, arena) == true)
       return
     elsif @energy <= 0
       return

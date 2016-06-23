@@ -55,8 +55,10 @@ def run
       when hit == "d" || hit == "'"
         @game.current_player.move_right(@game.current_player, @arena)
         @game.update_stats
+
       when hit == "z" || hit == ","
         @game.current_player.dash_left(@game.current_player, @arena, @game)
+        
       when hit == "c" || hit == "/"
         @game.current_player.dash_right(@game.current_player, @arena, @game)
       end
