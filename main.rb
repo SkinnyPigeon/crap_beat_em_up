@@ -17,9 +17,6 @@ def run
   while @game.win? == false
     
     system"clear"
-    puts "Left: A or L  Right: D or '  Punch: W or P  Kick: S or ;  Block: Q or O  Super: E or [  End Go: Space"
-    puts "  1 Energy      1 Energy       1 Energy       2 Energy      1 Energy       3 Energy    Regain 2 Energy"
-    puts
     puts
     puts "#{@guy1.name}'s Health: #{@guy1.health}         #{@guy2.name}'s Health: #{@guy2.health} "
     puts "#{@guy1.name}'s Energy: #{@guy1.energy}         #{@guy2.name}'s Energy: #{@guy2.energy} "
@@ -58,6 +55,10 @@ def run
       when hit == "d" || hit == "'"
         @game.current_player.move_right(@game.current_player, @arena)
         @game.update_stats
+      when hit == "z" || hit == ","
+        @game.current_player.dash_left(@game.current_player, @arena, @game)
+      when hit == "c" || hit == "/"
+        @game.current_player.dash_right(@game.current_player, @arena, @game)
       end
   end
   puts "Congratulations #{@game.current_player.icon}"

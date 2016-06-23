@@ -53,6 +53,21 @@ class Guy
     end
   end
 
+  def dash_right(guy, arena, game)
+    arena = arena.state
+    if (guy.check_right(guy, arena) && guy.special_check_right(guy, arena) == false)
+      return
+    elsif @energy <= 0
+      return
+    else
+      arena.delete_at(guy.position)
+      guy.move(2)
+      guy.move_energy(1)
+      arena.insert(guy.position, guy.icon)
+      guy.end_turn(game)
+    end
+  end
+
   def move_left(guy1, arena)
     arena = arena.state
     if guy1.check_left(guy1, arena) == false
@@ -64,6 +79,21 @@ class Guy
       guy1.move(-1)
       guy1.move_energy(1)
       arena.insert(guy1.position, guy1.icon)
+    end
+  end
+
+  def dash_left(guy, arena, game)
+    arena = arena.state
+    if (guy.check_left(guy, arena) && guy.special_check_left(guy, arena) == true)
+      return
+    elsif @energy <= 0
+      return
+    else
+      arena.delete_at(guy.position)
+      guy.move(-2)
+      guy.move_energy(1)
+      arena.insert(guy.position, guy.icon)
+      guy.end_turn(game)
     end
   end
 
