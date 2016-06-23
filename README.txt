@@ -4,6 +4,8 @@ This is a turn based fighter for two players.
 
 The starting fighter is chosen at random so pick your side of the keyboard or character before starting.
 
+To run: ruby.main.rb
+
 The rules:    Fighters start with 5 health and 3 energy.
               Players take it in turn to use their energy to move about the board and cause damage to the other player.
               At the start of your next turn you will regain 2 energy to use up to a maximum of 3.
