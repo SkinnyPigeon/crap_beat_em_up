@@ -19,6 +19,7 @@ The controls: Punch - W or P      Costs: 1 Energy    Hits: 1 Damage
               Dash Right - C or / Costs: 1 Energy    Moves: 2 Units to the right but ends turn immediately
               Dash Left - Z or ,  Costs: 1 Energy    Moves: 2 Units to the left but ends turn immediately
               Block - Q or O      Costs: 1 Energy    Blocks: 2 Units of damage for one hit and resets at start of turn
+              End Turn - " "      Costs: 0 Energy    Ends go and changes player
 
 Feedback:     Please let me know if you find any bugs or have any balancing issues
 
